@@ -1,0 +1,11 @@
+{
+  "name": "db-project",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/mhdolatabadi/db-project.git",
+  "author": "mohammadhossein <m.h.dolatabadi.a@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "mysql": "^2.18.1"
+  }
+}
