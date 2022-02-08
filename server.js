@@ -2,7 +2,7 @@ const mysql = require('mysql')
 const express = require('express')
 
 const app = express()
-const port = 3000
+const port = 4000
 
 app.use(express.json()) // for parsing application/json
 
@@ -30,6 +30,7 @@ db.query(sql, function (err, result) {
 
 app.get('/', (req, res) => {
   const { body, parameters } = req.query
+  console.log(body, parameters)
   res.header('Access-Control-Allow-Origin', '*')
   db.query(body, parameters, function (err, result) {
     if (err) res.send(err)
@@ -37,4 +38,6 @@ app.get('/', (req, res) => {
   })
 })
 
-// insert into Personnel values('111', 'M' , 'D' , null , null ,  0, '6037697508102875', '2008-11-11', null)
+// select Vehicle_Year from Deliverer where Personnel_Id = ?
+// and Model = ?
+// '1111', ' 45H34511'

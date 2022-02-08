@@ -6,7 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css" />
   </head>
+
   <body>
     <h3>Query Text (specify paramters using question mark)</h3>
     <textarea id="input-query" height="15px" rows="5"></textarea>
@@ -14,18 +16,26 @@
     <input id="input-query-parameter" />
     <button id="send-button">Send</button>
     <h3>Result:</h3>
-    <p id="result"></p>
+    <pre>
+        <code id="result"></code>
+    </pre>
     <script type="module">
       const button = document.getElementById('send-button')
       button.onclick = async () => {
-        const res = await axios.get('http://localhost:3000', {
+        const res = await axios.get('http://localhost:4000', {
           params: {
             body: document.getElementById('input-query').value,
-            parameters: document.getElementById('input-query').value.split(','),
+            parameters: document
+              .getElementById('input-query-parameter')
+              .value.split(','),
           },
         })
         console.log(res)
-        document.getElementById('result').innerHTML = JSON.stringify(res.data)
+        document.getElementById('result').innerHTML = JSON.stringify(
+          res.data,
+          null,
+          4
+        )
       }
     </script>
   </body>
